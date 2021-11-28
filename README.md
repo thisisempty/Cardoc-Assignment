@@ -30,7 +30,7 @@
 
 > ## 모델링
 >
-> ![스크린샷 2021-11-29 오전 6.14.40](/Users/dabeen/Downloads/스크린샷 2021-11-29 오전 6.14.40.png)
+> <img width="922" alt="스크린샷 2021-11-29 오전 6 14 40" src="https://user-images.githubusercontent.com/86424094/143787817-fb6c7c61-a00d-4a34-9773-4e86cebda36d.png">
 
 
 
