@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module }        from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UserTrimsService }    from './user-trims.service';
@@ -12,6 +12,7 @@ import { AuthModule }          from 'src/auth/auth.module';
         AuthModule
     ],
     providers: [UserTrimsService],
-    controllers: [UserTrimsController]
+    controllers: [UserTrimsController],
+    exports: [UserTrimsService]
 })
 export class UserTrimsModule {}

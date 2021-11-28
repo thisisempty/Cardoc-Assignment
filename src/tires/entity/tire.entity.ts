@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne } from "typeorm";
 
 import { BaseEntity } from "src/common/base-entity";
 import { UserTrim } from "src/user-trims/entity/user-trim.entity";
@@ -25,5 +25,6 @@ export class Tire extends BaseEntity{
     rearWheelSize: number;
 
     @OneToOne(() => UserTrim)
+    @JoinColumn()
     public userTrim: UserTrim;
 }

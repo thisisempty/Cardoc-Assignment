@@ -43,7 +43,7 @@ export class AuthService {
     async signIn(signInDto: SignInDto): Promise<{access_token}> {
         const { id, password } = signInDto;
 
-        const user = await this.getUserById(id);
+        const user = await this.userRepository.findOne(signInDto.id);
 
         if(user && (await bcrypt.compare(password, user.password))) {
             const payload      = { id };
@@ -55,8 +55,8 @@ export class AuthService {
         }  
     } 
 
-    async getUserById(id: string): Promise<User> {
-        return await this.userRepository.findOne({userId: id})
+    async getUserById(userId: string): Promise<User> {
+        return await this.userRepository.findOne({userId:userId})
     }
 
     private async isExistUser(id: string): Promise<void> {
