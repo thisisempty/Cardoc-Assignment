@@ -1,9 +1,17 @@
 import { Module } from '@nestjs/common';
-import { UserTrimsService } from './user-trims.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { UserTrimsService }    from './user-trims.service';
 import { UserTrimsController } from './user-trims.controller';
+import { UserTrim }            from './entity/user-trim.entity';
+import { AuthModule }          from 'src/auth/auth.module';
 
 @Module({
-  providers: [UserTrimsService],
-  controllers: [UserTrimsController]
+    imports: [
+        TypeOrmModule.forFeature([UserTrim]),
+        AuthModule
+    ],
+    providers: [UserTrimsService],
+    controllers: [UserTrimsController]
 })
 export class UserTrimsModule {}
