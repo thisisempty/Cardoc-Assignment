@@ -22,7 +22,8 @@ import { JwtStrategy }    from './jwt.strategy';
                 }
             }),
         }),
-        TypeOrmModule.forFeature([User])],
+        TypeOrmModule.forFeature([User]),
+        ConfigModule],
     providers: [AuthService, JwtStrategy],
     controllers: [AuthController],
     exports: [JwtStrategy, PassportModule, AuthService]

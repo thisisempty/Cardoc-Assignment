@@ -1,10 +1,9 @@
 import { Repository } from 'typeorm';
 
 import { BadRequestException, 
-         Injectable, 
-         InternalServerErrorException } from '@nestjs/common';
-import { InjectRepository }             from '@nestjs/typeorm';
-import { AuthService }                  from 'src/auth/auth.service';
+         Injectable }         from '@nestjs/common';
+import { InjectRepository }   from '@nestjs/typeorm';
+import { AuthService }        from 'src/auth/auth.service';
 
 import { CreateUserTrimDto } from './dto/create-user-trim.dto';
 import { UserTrim }          from './entity/user-trim.entity';
@@ -20,21 +19,19 @@ export class UserTrimsService {
         createUserTrimDto: CreateUserTrimDto,
         userId: string
     ): Promise<UserTrim>{
+        
         const user = await this.authServive.getUserById(userId);
 
-        if (!user) {
-            throw new BadRequestException("DOES_NOT_EXIST");
+        if(!user) {
+            throw new BadRequestException("DOES_NOT_EXIST")
         }
 
-        try {
-            const userTrim = this.userTrimRepository.create({
-                trimId: createUserTrimDto.trimId,
-                user
-            })
+        const userTrim = await this.userTrimRepository.create({
+            trimId: createUserTrimDto.trimId,
+            user
+        })
 
-            return await this.userTrimRepository.save(userTrim);
-        } catch (error) {
-            throw new InternalServerErrorException(error.message);
-        }
+        return await this.userTrimRepository.save(userTrim)
+        
     }
 }

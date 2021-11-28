@@ -17,8 +17,7 @@ import { UserTrimsModule } from './user-trims/user-trims.module';
             type        : 'sqlite',
             database    : 'cardoc.db',
             entities    : ["dist/**/*.entity{.ts,.js}"],
-            synchronize : true,
-            logging: true
+            synchronize : false
         }),
         AuthModule, 
         TiresModule, 
